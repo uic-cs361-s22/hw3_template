@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int safewrite(int, char*, int);
+long int safewrite(int, char*, int);
 
 int main(int argc, char** argv) {
     if(argc!=1) {
@@ -10,7 +10,8 @@ int main(int argc, char** argv) {
     }
     char *line=malloc(1000);
     long unsigned bytes=1000;
-    while((bytes=getline(&line,&bytes,stdin))) {
-        safewrite(1,line,bytes);
-    }    
+    long int ret=0;
+    while((ret=getline(&line,&bytes,stdin))) {
+        safewrite(1,line,ret);
+    }
 }
